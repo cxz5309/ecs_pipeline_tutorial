@@ -15,7 +15,7 @@ phases:
       # - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
       # - IMAGE_URI=${REPOSITORY_URI}:${TAG}
       # - docker build -t $IMAGE_URI .
-        - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
   # 빌드 후에 CodeBuild가 실행하는 명령을 나타냅니다(있는 경우). 예를 들어, Maven을 사용하여 빌드 결과물을 JAR 또는 WAR 파일에 패키지할 수 있으며, Amazon ECR에 Docker 이미지를 푸시할 수도 있습니다.
   build:
     commands:
@@ -31,8 +31,7 @@ phases:
       - echo Build started on `date`
       - echo Pushing docker image
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
-
-- printf '[{"name":"%s","imageUri":"%s"}]' $IMAGE_REPO_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG  > imagedefinitions.json
+      - printf '[{"name":"%s","imageUri":"%s"}]' $IMAGE_REPO_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG  > imagedefinitions.json
 # CodeBuild가 빌드 출력을 찾을 수 있는 위치 및 CodeBuild가 Amazon S3 출력 버킷에 업로드하기 위해 빌드 출력을 준비하는 방식에 대한 정보를 나타냅니다.
 artifacts:
   # 빌드 환경의 빌드 출력 결과물을 포함하는 위치를 나타냅니다.
