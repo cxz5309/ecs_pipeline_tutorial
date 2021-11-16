@@ -1,1 +1,1 @@
-# ecs_pipeline_tutorial
+# codepipeline-docker
