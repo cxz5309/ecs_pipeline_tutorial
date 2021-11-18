@@ -15,7 +15,7 @@ phases:
       # - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
       # - IMAGE_URI=${REPOSITORY_URI}:${TAG}
       # - docker build -t $IMAGE_URI .
-      - docker run --rm -i amazon/aws-cli --version
+      - docker run --rm amazon/aws-cli --version
       # - $(aws ecr get-login --no-include-email --region ap-northeast-2)
       - $(aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com)
       # - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com
