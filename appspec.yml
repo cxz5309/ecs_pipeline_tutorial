@@ -1,10 +1,20 @@
 version: 0.0
-os: linux
-files:
-  - source: /
-    destination: /home/ec2_user/app
-    file_exists_behavior: OVERWRITE
-hooks:
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: <TASK_DEFINITION>
+        LoadBalancerInfo:
+          ContainerName: "simple-app"
+          ContainerPort: 80
+# # Optional properties
+#         PlatformVersion: "LATEST"
+#         NetworkConfiguration:
+#             AwsvpcConfiguration:
+#               Subnets: ["subnet-name-1", "subnet-name-2"]
+#               SecurityGroups: ["security-group"]
+#               AssignPublicIp: "ENABLED"
+Hooks:
   ApplicationStop:
     - location: /code_deploy/application_stop.sh
       timeout: 500
@@ -17,7 +27,7 @@ hooks:
   ApplicationStart:
     - location: /code_deploy/application_start.sh
       timeout: 500
-  #   ValidateService:
+#   ValidateService:
 #     - location: Scripts/MonitorService.sh
 #       timeout: 3600
 #       runas: codedeployuser
