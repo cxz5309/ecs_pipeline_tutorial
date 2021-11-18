@@ -35,11 +35,11 @@ phases:
       - echo Build started on `date`
       - echo Pushing docker image
       - docker push 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-codepipeline:latest
-      - printf '[{"name":"%s","imageUri":"%s"}]' ecs-codepipeline 303022694345.ecr.ap-northeast-2.amazonaws.com/ecs-codepipeline:latest  > imagedefinitions.json
+      - printf '[{"name":"%s","imageUri":"%s"}]' ecs-codepipeline 303022694345.ecr.ap-northeast-2.amazonaws.com/ecs-codepipeline:latest  > taskdef.json
 # CodeBuild가 빌드 출력을 찾을 수 있는 위치 및 CodeBuild가 Amazon S3 출력 버킷에 업로드하기 위해 빌드 출력을 준비하는 방식에 대한 정보를 나타냅니다.
 artifacts:
   # 빌드 환경의 빌드 출력 결과물을 포함하는 위치를 나타냅니다.
   files:
-    # - taskdef.json
-    - imagedefinitions.json
+    - taskdef.json
+    # - imagedefinitions.json
   # name: build-$(date +%Y-%m-%d)
