@@ -40,5 +40,6 @@ phases:
 artifacts:
   # 빌드 환경의 빌드 출력 결과물을 포함하는 위치를 나타냅니다.
   files:
+    # - taskdef.json
     - imagedefinitions.json
   # name: build-$(date +%Y-%m-%d)
