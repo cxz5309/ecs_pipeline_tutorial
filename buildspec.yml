@@ -28,14 +28,14 @@ phases:
       # - IMAGE_TAG="$(date '+%Y%m%d%H%M%S')"
       # - echo $IMAGE_TAG
       # - npm run test
-      - docker build -t ecs-codepipeline:latest .
-      - docker tag ecs-codepipeline:latest 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-codepipeline:latest
+      - docker build -t new-ecr:latest .
+      - docker tag new-ecr:latest 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/new-ecr:latest
   post_build:
     commands:
       - echo Build started on `date`
       - echo Pushing docker image
-      - docker push 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/ecs-codepipeline:latest
-      - printf '[{"name":"%s","imageUri":"%s"}]' ecs-codepipeline 303022694345.ecr.ap-northeast-2.amazonaws.com/ecs-codepipeline:latest  > imageDetail.json
+      - docker push 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/new-ecr:latest
+      - printf '[{"name":"%s","imageUri":"%s"}]' new-ecr 303022694345.ecr.ap-northeast-2.amazonaws.com/new-ecr:latest  > imageDetail.json
 # CodeBuild가 빌드 출력을 찾을 수 있는 위치 및 CodeBuild가 Amazon S3 출력 버킷에 업로드하기 위해 빌드 출력을 준비하는 방식에 대한 정보를 나타냅니다.
 artifacts:
   files:
