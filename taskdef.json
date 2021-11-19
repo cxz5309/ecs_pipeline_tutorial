@@ -46,7 +46,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "new2-container"
+      "name": "new-ecr"
     }
   ],
   "placementConstraints": [],
