@@ -5,7 +5,7 @@ Resources:
       Properties:
         TaskDefinition: <TASK_DEFINITION>
         LoadBalancerInfo:
-          ContainerName: "new2-container"
+          ContainerName: "imageDetail"
           ContainerPort: 8080
 # # Optional properties
 #         PlatformVersion: "LATEST"
