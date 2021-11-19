@@ -5,8 +5,8 @@ Resources:
       Properties:
         TaskDefinition: <TASK_DEFINITION>
         LoadBalancerInfo:
-          ContainerName: "simple-app"
-          ContainerPort: 80
+          ContainerName: "new2-container"
+          ContainerPort: 8080
 # # Optional properties
 #         PlatformVersion: "LATEST"
 #         NetworkConfiguration:
