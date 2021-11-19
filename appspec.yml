@@ -5,7 +5,7 @@ Resources:
       Properties:
         TaskDefinition: <TASK_DEFINITION>
         LoadBalancerInfo:
-          ContainerName: "imageDetail"
+          ContainerName: "simple-app"
           ContainerPort: 8080
 # # Optional properties
 #         PlatformVersion: "LATEST"
@@ -14,19 +14,19 @@ Resources:
 #               Subnets: ["subnet-name-1", "subnet-name-2"]
 #               SecurityGroups: ["security-group"]
 #               AssignPublicIp: "ENABLED"
-Hooks:
-  ApplicationStop:
-    - location: /code_deploy/application_stop.sh
-      timeout: 500
-  BeforeInstall:
-    - location: /code_deploy/before_install.sh
-      timeout: 500
-  #  AfterInstall:
-  #    - location: /code_deploy/after_install.sh
-  #      runas: root
-  ApplicationStart:
-    - location: /code_deploy/application_start.sh
-      timeout: 500
+#Hooks:
+#  ApplicationStop:
+#    - location: /code_deploy/application_stop.sh
+#      timeout: 500
+#  BeforeInstall:
+#    - location: /code_deploy/before_install.sh
+#      timeout: 500
+#  AfterInstall:
+#    - location: /code_deploy/after_install.sh
+#      runas: root
+#  ApplicationStart:
+#    - location: /code_deploy/application_start.sh
+#      timeout: 500
 #   ValidateService:
 #     - location: Scripts/MonitorService.sh
 #       timeout: 3600
