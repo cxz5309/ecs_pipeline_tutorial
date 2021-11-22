@@ -1,12 +1,10 @@
-FROM node:10.16.0-jessie
-RUN apt-get update && apt-get install git -y && apt-get install imagemagick -y;
+FROM node:14
 
 WORKDIR /app
 
 COPY . .
 
 RUN npm install
-RUN chown -R node:node /my-sample-app
 
 EXPOSE 8080
 
