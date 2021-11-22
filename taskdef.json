@@ -42,7 +42,7 @@
       "memoryReservation": 512,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "<imageDetail>",
+      "image": "<IMAGE1_NAME>",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -59,7 +59,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "imageDetail"
+      "name": "my-sample-app"
     }
   ],
   "placementConstraints": [],
