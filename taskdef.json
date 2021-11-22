@@ -1,5 +1,5 @@
 {
-  "executionRoleArn": "arn:aws:iam::01234567890:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::303022694345:role/ecsTaskExecutionRole",
   "containerDefinitions": [{
     "name": "my-sample-app",
     "image": "303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/my-sample-app",
@@ -10,11 +10,8 @@
       "containerPort": 80
     }]
   }],
-  "requiresCompatibilities": [
-    "FARGATE"
-  ],
   "networkMode": "awsvpc",
   "cpu": "256",
   "memory": "512",
-  "family": "helloapp"
+  "family": "my-sample-app"
 } 
