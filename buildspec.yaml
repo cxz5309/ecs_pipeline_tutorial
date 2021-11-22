@@ -28,14 +28,14 @@ phases:
       # - IMAGE_TAG="$(date '+%Y%m%d%H%M%S')"
       # - echo $IMAGE_TAG
       # - npm run test
-      - docker build -t 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/my-sample-app:latest .
-      - docker tag 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/my-sample-app:latest 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/my-sample-app:latest
+      - docker build -t my-sample-app:latest .
+      - docker tag my-sample-app:latest 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/my-sample-app:latest
   post_build:
     commands:
       - echo Build started on `date`
       - echo Pushing docker image
       - docker push 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/my-sample-app:latest
-      - printf '{"name":"name","imageUri":"%s"}' 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/my-sample-app:latest  > imageDetail.json
+      - printf '{"name":"%s","imageUri":"%s"}' my-sample-app 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/my-sample-app:latest  > imageDetail.json
       # - sed -i 's/<APP_NAME>/new-ecr/g' appspec.yml taskdef.json
       # - sed -i 's/<SERVICE_PORT>/8080/g' appspec.yml taskdef.json
       # - sed -i 's/<AWS_ACCOUNT_ID>/303022694345/g' taskdef.json
