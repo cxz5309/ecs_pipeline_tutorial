@@ -16,10 +16,10 @@ phases:
       # - IMAGE_URI=${REPOSITORY_URI}:${TAG}
       # - docker build -t $IMAGE_URI .
       # - docker run --rm amazon/aws-cli --version
-      - $(aws ecr get-login --no-include-email --region ap-northeast-2)
+      # - $(aws ecr get-login --no-include-email --region ap-northeast-2)
       # - $(aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com)
       #- aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com
-      #- $(aws ecr get-login --no-include-email --region ap-northeast-2)
+      # - $(aws ecr get-login --no-include-email --region ap-northeast-2)
   # 빌드 후에 CodeBuild가 실행하는 명령을 나타냅니다(있는 경우). 예를 들어, Maven을 사용하여 빌드 결과물을 JAR 또는 WAR 파일에 패키지할 수 있으며, Amazon ECR에 Docker 이미지를 푸시할 수도 있습니다.
   build:
     commands:
@@ -28,19 +28,19 @@ phases:
       # - IMAGE_TAG="$(date '+%Y%m%d%H%M%S')"
       # - echo $IMAGE_TAG
       # - npm run test
-      - docker build -t new-ecr:latest .
-      - docker tag new-ecr:latest 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/new-ecr:latest
+      - docker build -t 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/my-sample-app:latest .
+      - docker tag 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/my-sample-app:latest 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/new-ecr:latest
   post_build:
     commands:
       - echo Build started on `date`
       - echo Pushing docker image
-      - docker push 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/new-ecr:latest
-      - printf '{"imageUri":"%s"}' 303022694345.ecr.ap-northeast-2.amazonaws.com/new-ecr:latest  > imageDetail.json
-      - sed -i 's/<APP_NAME>/new-ecr/g' appspec.yml taskdef.json
-      - sed -i 's/<SERVICE_PORT>/8080/g' appspec.yml taskdef.json
-      - sed -i 's/<AWS_ACCOUNT_ID>/303022694345/g' taskdef.json
-      - sed -i 's/<MEMORY_RESV>/500/g' taskdef.json
-      - sed -i 's/<IMAGE_NAME>/303022694345\.dkr\.ecr\.ap-northeast-2\.amazonaws.com\/new-ecr\:latest/g' taskdef.json
+      - docker push 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/my-sample-app:latest
+      - printf '{"name":"name","imageUri":"%s"}' 303022694345.dkr.ecr.ap-northeast-2.amazonaws.com/my-sample-app:latest  > imageDetail.json
+      # - sed -i 's/<APP_NAME>/new-ecr/g' appspec.yml taskdef.json
+      # - sed -i 's/<SERVICE_PORT>/8080/g' appspec.yml taskdef.json
+      # - sed -i 's/<AWS_ACCOUNT_ID>/303022694345/g' taskdef.json
+      # - sed -i 's/<MEMORY_RESV>/500/g' taskdef.json
+      # - sed -i 's/<IMAGE_NAME>/303022694345\.dkr\.ecr\.ap-northeast-2\.amazonaws.com\/new-ecr\:latest/g' taskdef.json
 # CodeBuild가 빌드 출력을 찾을 수 있는 위치 및 CodeBuild가 Amazon S3 출력 버킷에 업로드하기 위해 빌드 출력을 준비하는 방식에 대한 정보를 나타냅니다.
 artifacts:
   # files:
@@ -49,7 +49,6 @@ artifacts:
   files:
     - imageDetail.json
     - appspec.yml
-    - taskdef.json
     # - taskdef.json
     # - imagedefinitions.json
 #    - "image*.json"
