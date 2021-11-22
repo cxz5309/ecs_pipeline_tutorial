@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 
 RUN npm install
-RUN chown -R node:node /ecs-app
+RUN chown -R node:node /my-sample-app
 
 EXPOSE 8080
 
