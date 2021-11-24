@@ -11,8 +11,9 @@
       "containerPort": 80
     }]
   }],
-  "requiresCompatibilities": [
-    "EC2"
+  "compatibilities": [
+    "EC2",
+    "FARGATE"
   ],
   "launchType": "EC2",
   "networkMode": "awsvpc",
