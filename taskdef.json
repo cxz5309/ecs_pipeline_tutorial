@@ -14,7 +14,7 @@
   "requiresCompatibilities": [
     "EC2"
   ],
-  "networkMode": null,
+  "networkMode": "awsvpc",
   "cpu": "256",
   "memory": "512",
   "family": "my-sample-app"
