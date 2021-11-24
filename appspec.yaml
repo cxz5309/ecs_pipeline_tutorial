@@ -3,7 +3,6 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        launchType: EC2
         TaskDefinition: <TASK_DEFINITION>
         LoadBalancerInfo:
           ContainerName: "my-sample-app"
