@@ -11,11 +11,7 @@
       "containerPort": 80
     }]
   }],
-  "compatibilities": [
-    "EC2",
-    "FARGATE"
-  ],
-  "launchType": "EC2",
+  "launchType": null,
   "networkMode": "awsvpc",
   "cpu": "256",
   "memory": "512",
