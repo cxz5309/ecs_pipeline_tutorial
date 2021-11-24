@@ -7,4 +7,3 @@ Resources:
         LoadBalancerInfo:
           ContainerName: "my-sample-app"
           ContainerPort: 80
-        PlatformVersion: "LATEST"
